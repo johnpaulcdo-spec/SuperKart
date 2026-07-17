@@ -1,0 +1,38 @@
+name: SuperKart Hosting CI/CD
+
+on:
+  push:
+    branches: [ main ]   # Trigger workflow when you push to main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.12'
+
+    - name: Install dependencies
+      run: |
+        pip install --no-cache-dir -r requirements.txt
+        pip install streamlit pyngrok datasets joblib xgboost scikit-learn pandas
+
+    - name: Train model
+      run: python scripts/train.py
+
+    - name: Save artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: superkart-model
+        path: xgb_model.pkl
+
+    - name: Deploy Streamlit app
+      run: |
+        nohup streamlit run hosting/hosting.py --server.port=8501 &
+        sleep 10
+        echo "🚀 SuperKart app deployed"
