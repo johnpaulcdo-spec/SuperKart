@@ -29,7 +29,7 @@ jobs:
       run: python scripts/train.py
 
     - name: Upload model artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: xgb-model
         path: xgb_model.pkl
