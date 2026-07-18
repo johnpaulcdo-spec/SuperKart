@@ -4,7 +4,7 @@ from xgboost import XGBRegressor
 import joblib
 
 # Load prepared dataset
-df = pd.read_csv("data/superkart_sales.csv")
+df = pd.read_csv("data/SuperKart.csv")
 
 # Features and target
 X = df.drop("sales", axis=1)

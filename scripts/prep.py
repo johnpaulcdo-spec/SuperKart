@@ -2,7 +2,7 @@ import pandas as pd
 from datasets import Dataset
 
 # Load your raw data
-df = pd.read_csv("data/superkart_sales.csv")
+df = pd.read_csv("data/SuperKart.csv")
 
 # Basic cleaning
 df = df.dropna()
