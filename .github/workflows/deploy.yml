@@ -21,6 +21,7 @@ jobs:
       run: |
         pip install -r requirements.txt
         pip install pyngrok
+        pip install datasets
 
     - name: Run data preparation
       run: python scripts/prep.py
@@ -39,7 +40,7 @@ jobs:
         NGROK_TOKEN: ${{ secrets.NGROK_TOKEN }}
       run: |
         ngrok config add-authtoken $NGROK_TOKEN
-        nohup streamlit run hosting/hosting.py --server.port 8501 &
+        nohup streamlit run hosting/hosting.py --server.port=8501 &
         sleep 10
         ngrok http 8501 > ngrok_url.txt &
         sleep 10
