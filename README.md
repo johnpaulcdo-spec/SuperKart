@@ -55,7 +55,7 @@ SuperKart/
 The dataset is versioned and hosted on Hugging Face:
 
 🔗 Hugging Face Dataset:  
-https://huggingface.co/datasets/JohnPaul13jp79/SuperKart_dataset (huggingface.co in Bing)
+https://huggingface.co/datasets/JohnPaul13jp79/SuperKart_dataset
 
 Uploaded using prep.py and automatically consumed by training and hosting scripts.
 
