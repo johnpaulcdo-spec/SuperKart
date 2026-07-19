@@ -9,7 +9,7 @@ jobs:
   data-prep:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: 'Debug: list files'
         run: ls -R .
       - name: Install Dependencies
@@ -23,7 +23,7 @@ jobs:
     needs: data-prep
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Install Dependencies
         run: pip install -r requirements.txt
       - name: Train Model
@@ -35,7 +35,7 @@ jobs:
     needs: model-training
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Install Dependencies
         run: pip install -r requirements.txt
       - name: Deploy App
