@@ -1,4 +1,8 @@
 SuperKart — Sales Forecasting MLOps Pipeline
+
+![SuperKart MLOps Pipeline](https://github.com/johnpaulcdo-spec/SuperKart/actions/workflows/pipeline.yml/badge.svg)
+![SuperKart CI/CD Pipeline](https://github.com/johnpaulcdo-spec/SuperKart/actions/workflows/deploy.yml/badge.svg)
+
 SuperKart is an end‑to‑end MLOps pipeline designed for retail sales forecasting.
 The system automates data preparation, model training, artifact management, and application deployment using GitHub Actions, Hugging Face Datasets, Streamlit, and ngrok.
 
