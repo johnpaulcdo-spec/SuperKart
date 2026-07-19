@@ -7,8 +7,8 @@ import joblib
 df = pd.read_csv("data/SuperKart.csv")
 
 # Features and target
-X = df.drop("sales", axis=1)
-y = df["sales"]
+X = df.drop("Product_Store_Sales_Total", axis=1)
+y = df["Product_Store_Sales_Total"]
 
 # Train/test split
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
