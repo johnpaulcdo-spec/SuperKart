@@ -66,7 +66,9 @@ Training script:
 text
 scripts/train.py
 Latest Metrics
-[Pending refresh — last recorded metrics predate the target-column and categorical-feature-handling fixes to train.py. Update with the RMSE and R² printed in the "Train model" step log of the next successful pipeline run.]
+RMSE: 483.57
+
+R²: 0.795
 
 Model Artifact
 text
