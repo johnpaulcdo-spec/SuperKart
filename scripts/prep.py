@@ -13,7 +13,7 @@ dataset = Dataset.from_pandas(df)
 
 # Push to Hugging Face Hub (uses HF_TOKEN from the workflow environment)
 dataset.push_to_hub(
-    "johnpaulcdo-spec/superkart-dataset",
+    "JohnPaul13jp79/superkart-dataset",
     token=os.environ["HF_TOKEN"],
 )
 print("✅ Data preparation complete and uploaded.")
