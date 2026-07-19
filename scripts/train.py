@@ -1,5 +1,7 @@
 import pandas as pd
+import numpy as np
 from sklearn.model_selection import train_test_split
+from sklearn.metrics import mean_squared_error, r2_score
 from xgboost import XGBRegressor
 import joblib
 
@@ -25,6 +27,19 @@ model = XGBRegressor(
     enable_categorical=True,
 )
 model.fit(X_train, y_train)
+
+# Evaluate on the held-out test set
+y_pred = model.predict(X_test)
+rmse = np.sqrt(mean_squared_error(y_test, y_pred))
+r2 = r2_score(y_test, y_pred)
+
+print(f"RMSE: {rmse:.2f}")
+print(f"R2: {r2:.3f}")
+
+# Persist metrics so downstream steps (e.g. README updates) can read them
+with open("metrics.txt", "w") as f:
+    f.write(f"RMSE: {rmse:.2f}\n")
+    f.write(f"R2: {r2:.3f}\n")
 
 # Save model artifact
 joblib.dump(model, "xgb_model.pkl")
