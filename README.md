@@ -1,39 +1,34 @@
-# 📘 SuperKart — Sales Forecasting MLOps Pipeline
+SuperKart — Sales Forecasting MLOps Pipeline
+SuperKart is an end‑to‑end MLOps pipeline designed for retail sales forecasting.
+The system automates data preparation, model training, artifact management, and application deployment using GitHub Actions, Hugging Face Datasets, Streamlit, and ngrok.
 
-![CI/CD](https://github.com/johnpaulcdo-spec/SuperKart/actions/workflows/deploy.yml/badge.svg)
-![Python](https://img.shields.io/badge/python-3.10-blue.svg)
-![License](https://img.shields.io/badge/license-Educational%20Use-lightgrey.svg)
-![Docker](https://img.shields.io/badge/docker-ready-blue.svg)
+This repository demonstrates a reproducible, cloud‑ready machine learning workflow suitable for enterprise AI teams, academic research, and production deployment.
 
-SuperKart is a complete **end‑to‑end MLOps pipeline** for retail sales forecasting.  
-It automates data preparation, model training, artifact versioning, and deployment using **GitHub Actions**, **Hugging Face**, **Streamlit**, and **ngrok**.
+Overview
+SuperKart predicts Product_Store_Sales_Total using:
 
-This repository demonstrates a modern, reproducible, cloud‑ready ML workflow suitable for enterprise AI teams, academic submissions, and production deployment.
+Product attributes
 
----
+Store metadata
 
-## 🚀 Project Overview
+Pricing information
 
-SuperKart predicts **Product_Store_Sales_Total** using:
+Location and store type
 
-- Product attributes  
-- Store metadata  
-- Pricing information  
-- Location and store type  
+Core technologies:
 
-The pipeline uses:
+XGBoost
 
-- XGBoost Regressor  
-- Hugging Face Datasets  
-- Streamlit  
-- ngrok  
-- GitHub Actions  
+Hugging Face Datasets
 
----
+Streamlit
 
-## 🧱 Repository Structure
+ngrok
 
-```text
+GitHub Actions
+
+Repository Structure
+text
 SuperKart/
 │
 ├── data/
@@ -54,3 +49,122 @@ SuperKart/
 ├── Dockerfile
 ├── requirements.txt
 └── README.md
+Dataset
+Hugging Face Dataset:
+https://huggingface.co/datasets/JohnPaul13jp79/SuperKart_dataset (huggingface.co in Bing)
+
+The dataset is uploaded using prep.py and consumed automatically by the training and hosting components.
+
+Model Training
+Training script:
+
+text
+scripts/train.py
+Latest Metrics
+RMSE: 289.46
+
+R²: 0.927
+
+Model Artifact
+text
+xgb_model.pkl
+The artifact is uploaded automatically by GitHub Actions for every pipeline run.
+
+MLOps Pipeline (CI/CD)
+Workflow definition:
+
+text
+.github/workflows/deploy.yml
+Pipeline Stages
+Install dependencies
+
+Execute prep.py
+
+Execute train.py
+
+Upload model artifact
+
+Deploy Streamlit application
+
+Expose application via ngrok
+
+Output public URL
+
+The pipeline is triggered on every push to the main branch.
+
+Deployment (Streamlit + ngrok)
+Deployment script:
+
+text
+hosting/hosting.py
+Key capabilities:
+
+Local schema loading
+
+Hugging Face schema loading
+
+Interactive user interface
+
+Real‑time prediction
+
+The deployed application is accessible through the ngrok URL generated during CI/CD execution.
+
+Run Locally
+bash
+git clone https://github.com/johnpaulcdo-spec/SuperKart.git
+cd SuperKart
+pip install -r requirements.txt
+streamlit run hosting/hosting.py
+Run in Google Colab
+python
+from google.colab import userdata
+from pyngrok import ngrok
+import subprocess
+
+ngrok.set_auth_token(userdata.get("NGROK_TOKEN"))
+subprocess.Popen(["streamlit", "run", "hosting/hosting.py", "--server.port=8501"])
+public_url = ngrok.connect(8501)
+print(public_url)
+Usage Example
+json
+{
+  "Product": "Laptop",
+  "Store": "Store_42",
+  "Price": 799.99,
+  "Location": "Urban"
+}
+Roadmap
+Add support for multiple forecasting models
+
+Deploy on AWS, GCP, or Azure
+
+Integrate monitoring and logging
+
+Expand dataset coverage
+
+Add unit tests and CI for model validation
+
+Citation
+bibtex
+@misc{superkart2026,
+  author = {Paul, John},
+  title = {SuperKart — Sales Forecasting MLOps Pipeline},
+  year = {2026},
+  publisher = {GitHub},
+  journal = {GitHub Repository},
+  howpublished = {\url{https://github.com/johnpaulcdo-spec/SuperKart}}
+}
+Verifying ngrok Deployment URL
+After the CI/CD pipeline deploys the Streamlit application, GitHub Actions prints a public ngrok URL.
+
+Verification Steps
+Open GitHub Actions
+
+Select the latest workflow run
+
+Expand the step titled Deploy Streamlit app with ngrok
+
+Confirm the presence of a URL similar to:
+https://xxxx.ngrok-free.app
+
+This URL provides access to the live SuperKart forecasting application.
