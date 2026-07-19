@@ -24,6 +24,8 @@ jobs:
         pip install datasets
 
     - name: Run data preparation
+      env:
+        HF_TOKEN: ${{ secrets.HF_TOKEN }}
       run: python scripts/prep.py
 
     - name: Train model
