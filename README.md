@@ -51,7 +51,7 @@ SuperKart/
 └── README.md
 Dataset
 Hugging Face Dataset:
-https://huggingface.co/datasets/JohnPaul13jp79/SuperKart_dataset (huggingface.co in Bing)
+https://huggingface.co/datasets/JohnPaul13jp79/superkart-dataset
 
 The dataset is uploaded using prep.py and consumed automatically by the training and hosting components.
 
