@@ -47,7 +47,8 @@ SuperKart/
 │
 ├── .github/
 │   └── workflows/
-│       └── deploy.yml
+│       ├── deploy.yml
+│       └── pipeline.yml
 │
 ├── app.py
 ├── Dockerfile
@@ -65,9 +66,7 @@ Training script:
 text
 scripts/train.py
 Latest Metrics
-RMSE: 289.46
-
-R²: 0.927
+[Pending refresh — last recorded metrics predate the target-column and categorical-feature-handling fixes to train.py. Update with the RMSE and R² printed in the "Train model" step log of the next successful pipeline run.]
 
 Model Artifact
 text
@@ -75,10 +74,11 @@ xgb_model.pkl
 The artifact is uploaded automatically by GitHub Actions for every pipeline run.
 
 MLOps Pipeline (CI/CD)
-Workflow definition:
+Workflow definitions:
 
 text
 .github/workflows/deploy.yml
+.github/workflows/pipeline.yml
 Pipeline Stages
 Install dependencies
 
@@ -94,7 +94,7 @@ Expose application via ngrok
 
 Output public URL
 
-The pipeline is triggered on every push to the main branch.
+Both workflows are triggered on every push to the main branch.
 
 Deployment (Streamlit + ngrok)
 Deployment script:
